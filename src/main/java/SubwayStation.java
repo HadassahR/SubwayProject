@@ -1,11 +1,11 @@
+import java.util.Arrays;
 import java.util.List;
 
-public class Station{
+public class SubwayStation {
     public List<Feature> features;
 
     public static class Geometry {
         public List<Double> coordinates;
-
         public List<Double> getCoordinates() {
             return this.coordinates;
         }
@@ -20,7 +20,12 @@ public class Station{
         public String name;
         public String line;
         public String objectid;
+
+        public List<String> getLines(){
+            return Arrays.asList(line.split("-"));
+        }
     }
+
 }
 
 
