@@ -1,6 +1,9 @@
 import com.google.gson.annotations.SerializedName;
 
 import javax.print.DocFlavor;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SubwayLine {
@@ -55,32 +58,41 @@ public class SubwayLine {
     @SerializedName("7")
     public List<String> _7;
 
+    public List<String> returnOrderedList(List<String> connections){
+        List<Integer> integerList = new ArrayList<>();
+        for(String s : connections) integerList.add(Integer.valueOf(s));
+        Collections.sort(integerList);
+        List<String> sortedList = new ArrayList<>();
+        for(Integer i : integerList) sortedList.add(i.toString());
+        return sortedList;
+    }
+
     public List<String> returnLinesForStation(String station){
-        return station.equals("A") ? a :
-                "B".equals(station) ? b :
-                "C".equals(station) ? c :
-                "D".equals(station) ? d :
-                "E".equals(station) ? e :
-                "F".equals(station) ? f :
-                "G".equals(station) ? g :
-                "J".equals(station) ? j :
-                "L".equals(station) ? l :
-                "M".equals(station) ? m :
-                "N".equals(station) ? n :
-                "Q".equals(station) ? q :
-                "R".equals(station) ? r :
-                "S".equals(station) ? s :
-                "W".equals(station) ? w :
-                "Z".equals(station) ? z :
-                "7 Express".equals(station) ? _7Express :
-                "6 Express".equals(station) ? _6Express :
-                "1".equals(station) ? _1 :
-                "2".equals(station) ? _2 :
-                "3".equals(station) ? _3 :
-                "4".equals(station) ? _4 :
-                "5".equals(station) ? _5 :
-                "6".equals(station) ? _6 :
-                "7".equals(station) ? _7 : null; // What should be default?
+        return station.equals("A") ? returnOrderedList(a) :
+            "B".equals(station) ? returnOrderedList(b) :
+            "C".equals(station) ? returnOrderedList(c) :
+            "D".equals(station) ? returnOrderedList(d) :
+            "E".equals(station) ? returnOrderedList(e) :
+            "F".equals(station) ? returnOrderedList(f) :
+            "G".equals(station) ? returnOrderedList(g) :
+            "J".equals(station) ? returnOrderedList(j) :
+            "L".equals(station) ? returnOrderedList(l) :
+            "M".equals(station) ? returnOrderedList(m) :
+            "N".equals(station) ? returnOrderedList(n) :
+            "Q".equals(station) ? returnOrderedList(q) :
+            "R".equals(station) ? returnOrderedList(r) :
+            "S".equals(station) ? returnOrderedList(s) :
+            "W".equals(station) ? returnOrderedList(w) :
+            "Z".equals(station) ? returnOrderedList(z) :
+            "7 Express".equals(station) ? returnOrderedList(_7Express) :
+            "6 Express".equals(station) ? returnOrderedList(_6Express) :
+            "1".equals(station) ? returnOrderedList(_1) :
+            "2".equals(station) ? returnOrderedList(_2) :
+            "3".equals(station) ? returnOrderedList(_3) :
+            "4".equals(station) ? returnOrderedList(_4) :
+            "5".equals(station) ? returnOrderedList(_5) :
+            "6".equals(station) ? returnOrderedList(_6) :
+            "7".equals(station) ? returnOrderedList(_7) : Collections.emptyList();
     }
 }
 

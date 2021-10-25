@@ -18,4 +18,15 @@ public class SubwayConnections {
         return connections;
     }
     // TODO Order the ObjectIds in SubwayLines
+
+    public static void main(String[] args) throws IOException {
+        SubwayConnections subwayConnections = new SubwayConnections();
+        Map <String, List<String>> sc = subwayConnections.mapConnections();
+
+        for (Map.Entry<String,List<String>> entry : sc.entrySet())
+            System.out.println("Line = " + entry.getKey() +
+                    ", Stops = " + entry.getValue());
+    }
 }
+
+
