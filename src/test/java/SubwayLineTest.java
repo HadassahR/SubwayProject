@@ -13,18 +13,27 @@ public class SubwayLineTest {
     @Test
     public void convertJsonToLines() throws IOException {
         // given
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("SubwayLines.json"));
-        SubwayLine subwayLine = gson.fromJson(reader, SubwayLine.class);
+        Converter converter = new Converter();
 
         // when
-        reader.close();
+        SubwayLine subwayLine = converter.convertJsonToLine();
 
         // then
         assertNotNull(subwayLine);
         assertNotNull(subwayLine.a);
         assertEquals(subwayLine.a.size(), 66);
+    }
 
+    @Test
+    public void returnLinesForStation() throws IOException {
+        // given
+        Converter converter = new Converter();
+
+        // when
+        SubwayLine subwayLine = converter.convertJsonToLine();
+
+        // then
+        assertEquals(subwayLine.returnLinesForStation("7 Express").size(), 12);
     }
 
 }

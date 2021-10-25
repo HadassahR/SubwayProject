@@ -1,7 +1,15 @@
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class SubwayStation {
+
     public List<Feature> features;
 
     public static class Geometry {
@@ -21,10 +29,12 @@ public class SubwayStation {
         public String line;
         public String objectid;
 
-        public List<String> getLines(){
+        public List<String> getLines() {
             return Arrays.asList(line.split("-"));
         }
     }
+
+
 
 }
 

@@ -13,14 +13,11 @@ public class SubwayStationTest {
 
     @Test
     public void convertJsonToStation() throws IOException {
-
         // given
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("SubwayStations.json"));
-        SubwayStation subwayStation = gson.fromJson(reader, SubwayStation.class);
+        Converter converter = new Converter();
 
         // when
-        reader.close();
+        SubwayStation subwayStation = converter.convertJsonToStation();
 
         // then
         assertNotNull(subwayStation);
@@ -36,12 +33,10 @@ public class SubwayStationTest {
     @Test
     public void getLinesOfStation() throws IOException {
         // given
-        Gson gson = new Gson();
-        Reader reader = Files.newBufferedReader(Paths.get("SubwayStations.json"));
-        SubwayStation subwayStation = gson.fromJson(reader, SubwayStation.class);
+        Converter converter = new Converter();
 
         // when
-        reader.close();
+        SubwayStation subwayStation = converter.convertJsonToStation();
 
         // then
         assertEquals(subwayStation.features.get(0).properties.getLines().size(), 3);
