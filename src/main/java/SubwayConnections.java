@@ -1,9 +1,11 @@
 import javafx.util.Pair;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SubwayConnections {
 
@@ -20,24 +22,20 @@ public class SubwayConnections {
         return connections;
     }
 
-    public Map<String, Pair<String, String>> getDirectConnections (String station) {
+    public List<String> getDirectConnections (String station) {
         Map<String, List<String>> connectionsMap = mapConnections();
-        Map<String, Pair<String, String>> connectionResult = new HashMap<>();
-        String previous = null;
-        String next = null;
+        List<String> connectionResult = new ArrayList();
         for (Map.Entry<String,List<String>> entry : connectionsMap.entrySet()){
             List<String> connectionsList = entry.getValue();
             if (connectionsList.contains(station)) {
                 if (!(connectionsList.indexOf(station) == 0)){
-                    previous = connectionsList.get(connectionsList.indexOf(station) - 1);
+                    connectionResult.add(connectionsList.get(connectionsList.indexOf(station) - 1));
+                } else if (!(connectionsList.indexOf(station) == connectionsList.size() - 1)){
+                    connectionResult.add(connectionsList.get(connectionsList.indexOf(station) + 1));
                 }
-                if(!(connectionsList.indexOf(station) == connectionsList.size() - 1)){
-                    next = connectionsList.get(connectionsList.indexOf(station) + 1);
-                }
-                connectionResult.put(entry.getKey(), new Pair(previous, next));
             }
         }
-        return connectionResult;
+        return connectionResult.stream().distinct().collect(Collectors.toList());
     }
 }
 
