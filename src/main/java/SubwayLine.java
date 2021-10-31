@@ -1,98 +1,58 @@
 import com.google.gson.annotations.SerializedName;
 
-import javax.print.DocFlavor;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class SubwayLine {
     @SerializedName("A")
-    public List<String> a;
+    public List<Integer> a;
     @SerializedName("B")
-    public List<String> b;
+    public List<Integer> b;
     @SerializedName("C")
-    public List<String> c;
+    public List<Integer> c;
     @SerializedName("D")
-    public List<String> d;
+    public List<Integer> d;
     @SerializedName("E")
-    public List<String> e;
+    public List<Integer> e;
     @SerializedName("F")
-    public List<String> f;
+    public List<Integer> f;
     @SerializedName("G")
-    public List<String> g;
+    public List<Integer> g;
     @SerializedName("J")
-    public List<String> j;
+    public List<Integer> j;
     @SerializedName("L")
-    public List<String> l;
+    public List<Integer> l;
     @SerializedName("M")
-    public List<String> m;
+    public List<Integer> m;
     @SerializedName("N")
-    public List<String> n;
+    public List<Integer> n;
     @SerializedName("Q")
-    public List<String> q;
+    public List<Integer> q;
     @SerializedName("R")
-    public List<String> r;
+    public List<Integer> r;
     @SerializedName("S")
-    public List<String> s;
+    public List<Integer> s;
     @SerializedName("W")
-    public List<String> w;
+    public List<Integer> w;
     @SerializedName("Z")
-    public List<String> z;
+    public List<Integer> z;
     @SerializedName("7 Express")
-    public List<String> _7Express;
+    public List<Integer> _7Express;
     @SerializedName("6 Express")
-    public List<String> _6Express;
+    public List<Integer> _6Express;
     @SerializedName("1")
-    public List<String> _1;
+    public List<Integer> _1;
     @SerializedName("2")
-    public List<String> _2;
+    public List<Integer> _2;
     @SerializedName("3")
-    public List<String> _3;
+    public List<Integer> _3;
     @SerializedName("4")
-    public List<String> _4;
+    public List<Integer> _4;
     @SerializedName("5")
-    public List<String> _5;
+    public List<Integer> _5;
     @SerializedName("6")
-    public List<String> _6;
+    public List<Integer> _6;
     @SerializedName("7")
-    public List<String> _7;
+    public List<Integer> _7;
 
-    public List<String> returnOrderedList(List<String> connections){
-        List<Integer> integerList = new ArrayList<>();
-        for(String s : connections) integerList.add(Integer.valueOf(s));
-        Collections.sort(integerList);
-        List<String> sortedList = new ArrayList<>();
-        for(Integer i : integerList) sortedList.add(i.toString());
-        return sortedList;
-    }
-
-    public List<String> returnLinesForStation(String station){
-        return station.equals("A") ? returnOrderedList(a) :
-            "B".equals(station) ? returnOrderedList(b) :
-            "C".equals(station) ? returnOrderedList(c) :
-            "D".equals(station) ? returnOrderedList(d) :
-            "E".equals(station) ? returnOrderedList(e) :
-            "F".equals(station) ? returnOrderedList(f) :
-            "G".equals(station) ? returnOrderedList(g) :
-            "J".equals(station) ? returnOrderedList(j) :
-            "L".equals(station) ? returnOrderedList(l) :
-            "M".equals(station) ? returnOrderedList(m) :
-            "N".equals(station) ? returnOrderedList(n) :
-            "Q".equals(station) ? returnOrderedList(q) :
-            "R".equals(station) ? returnOrderedList(r) :
-            "S".equals(station) ? returnOrderedList(s) :
-            "W".equals(station) ? returnOrderedList(w) :
-            "Z".equals(station) ? returnOrderedList(z) :
-            "7 Express".equals(station) ? returnOrderedList(_7Express) :
-            "6 Express".equals(station) ? returnOrderedList(_6Express) :
-            "1".equals(station) ? returnOrderedList(_1) :
-            "2".equals(station) ? returnOrderedList(_2) :
-            "3".equals(station) ? returnOrderedList(_3) :
-            "4".equals(station) ? returnOrderedList(_4) :
-            "5".equals(station) ? returnOrderedList(_5) :
-            "6".equals(station) ? returnOrderedList(_6) :
-            "7".equals(station) ? returnOrderedList(_7) : Collections.emptyList();
-    }
 }
 

@@ -1,40 +1,51 @@
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class SubwayStation {
 
-    public List<Feature> features;
+    private List<Feature> features;
+
+    public List<Feature> getFeatures () {
+        return this.features;
+    }
 
     public static class Geometry {
-        public List<Double> coordinates;
+        private List<Double> coordinates;
         public List<Double> getCoordinates() {
             return this.coordinates;
         }
     }
 
     public static class Feature {
-        public Properties properties;
-        public Geometry geometry;
+        private Properties properties;
+        private Geometry geometry;
+
+        public Properties getProperties() {
+            return this.properties;
+        }
+        public Geometry getGeometry () {
+            return this.geometry;
+        }
     }
 
     public static class Properties{
-        public String name;
-        public String line;
-        public String objectid;
+        private String name;
+        private String line;
+        private String objectid;
 
         public List<String> getLines() {
             return Arrays.asList(line.split("-"));
         }
+        public String getName (){
+            return this.name;
+        }
+        public String getLine() {
+            return this.line;
+        }
+        public String getObjectid () {
+            return this.objectid;
+        }
     }
-
-
 
 }
 

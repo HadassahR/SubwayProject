@@ -10,19 +10,19 @@ public class SubwayConnectionsTest {
 
     private final List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
             "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
-    @Test
-    public void mapConnections() {
-        // given
-        SubwayConnections subwayConnections = new SubwayConnections();
-        // Create a list of train lines - iterate through them and make sure it is returning the proper line
-
-        // when
-        Map<String, List<String>> connectionsMap = subwayConnections.mapConnections();
-
-        // then
-        assertNotNull(connectionsMap);
-        Assert.assertEquals(connectionsMap.size(), trainLines.size());
-    }
+//    @Test
+//    public void mapConnections() {
+//        // given
+//        SubwayConnections subwayConnections = new SubwayConnections();
+//        // Create a list of train lines - iterate through them and make sure it is returning the proper line
+//
+//        // when
+//        Map<String, List<String>> connectionsMap = subwayConnections.mapConnections();
+//
+//        // then
+//        assertNotNull(connectionsMap);
+//        Assert.assertEquals(connectionsMap.size(), trainLines.size());
+//    }
 
 //    @Test
 //    public void valid_getDirectConnections() {
@@ -41,32 +41,32 @@ public class SubwayConnectionsTest {
 //    }
 
 
-    @Test
-    public void firstOnLine_getDirectConnections(){
-        // given
-        SubwayConnections subwayConnections = new SubwayConnections();
+//    @Test
+//    public void firstOnLine_getDirectConnections(){
+//        // given
+//        SubwayConnections subwayConnections = new SubwayConnections();
+//
+//        // when
+//        Map<String, List<String>> connectionsMap = subwayConnections.mapConnections();
+//        List<String> directConnections = subwayConnections.getDirectConnections("7");
+//        List<String> resultConnections = Arrays.asList("8", "15");
+//
+//        // then
+//        Assert.assertNotNull(directConnections);
+//        }
 
-        // when
-        Map<String, List<String>> connectionsMap = subwayConnections.mapConnections();
-        List<String> directConnections = subwayConnections.getDirectConnections("7");
-        List<String> resultConnections = Arrays.asList("8", "15");
-
-        // then
-        Assert.assertNotNull(directConnections);
-        }
-
-
-    @Test
-    public void lastOnLine_getDirectConnections(){
-        // given
-        SubwayConnections subwayConnections = new SubwayConnections();
-
-        // when
-        Map<String, List<String>> connectionsMap = subwayConnections.mapConnections();
-        List<String> directConnections = subwayConnections.getDirectConnections("469");
-        List<String> resultConnections = Arrays.asList("8", "15");
-
-        // then
-        Assert.assertNotNull(directConnections);
-    }
+//
+//    @Test
+//    public void lastOnLine_getDirectConnections(){
+//        // given
+//        SubwayConnections subwayConnections = new SubwayConnections();
+//
+//        // when
+//        Map<String, List<String>> connectionsMap = subwayConnections.mapConnections();
+//        List<String> directConnections = subwayConnections.getDirectConnections("469");
+//        List<String> resultConnections = Arrays.asList("8", "15");
+//
+//        // then
+//        Assert.assertNotNull(directConnections);
+//    }
 }
