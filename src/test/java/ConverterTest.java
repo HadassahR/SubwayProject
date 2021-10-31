@@ -2,7 +2,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ConverterTest {
 
@@ -16,6 +20,12 @@ public class ConverterTest {
 
         //then
         Assert.assertNotNull(stations);
+        assertNotNull(stations.get(0).getGeometry());
+        assertNotNull(stations.get(0).getProperties());
+        assertEquals(stations.get(0).getProperties().getName(), "Astor Pl");
+        assertEquals(stations.get(0).getProperties().getLine(), "4-6-6 Express");
+        assertEquals(stations.get(0).getProperties().getObjectid(), "1");
+        assertEquals(stations.get(0).getGeometry().getCoordinates().get(0).toString(), "-73.99106999861966");
     }
 
     @Test
@@ -26,7 +36,13 @@ public class ConverterTest {
         //when
         SubwayLine lines = converter.getLines();
 
+        List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
+                "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
+
         //then
         Assert.assertNotNull(lines);
+        for (String line : trainLines){
+            assertNotNull(converter.getLines().getLine(line));
+        }
     }
 }
