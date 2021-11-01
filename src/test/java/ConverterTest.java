@@ -2,8 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -37,14 +35,8 @@ public class ConverterTest {
         //when
         SubwayLine subwayLine = converter.getLines();
 
-        List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
-                "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
-
         //then
-        Assert.assertNotNull(trainLines);
-        for (String line : trainLines){
-            List<Integer> specificLine = subwayLine.getSpecificLine(line);
-            assertNotNull(specificLine);
+        Assert.assertNotNull(subwayLine);
         }
     }
-}
+

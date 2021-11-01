@@ -1,5 +1,6 @@
 import com.google.gson.annotations.SerializedName;
 
+import java.io.IOException;
 import java.util.*;
 
 public class SubwayStation {
@@ -27,19 +28,19 @@ public class SubwayStation {
         public Geometry getGeometry () {
             return this.geometry;
         }
-
-        public List<Integer> getConnections (Converter converter, int stationId){
+        public List<Integer> getConnections (Converter converter, Station station){
+            int stationId = Integer.parseInt(properties.objectid);
             List<Integer> connectingStations = new ArrayList<>();
             List<String> allSubwayLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
-                "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
+                    "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
 
             for (String line : allSubwayLines) {
                 List<Integer> currentSubwayLine = converter.getLines().getSpecificLine(line);
-                int currentStationId = Integer.parseInt(converter.getStations().get(stationId).properties.objectid);
+                int currentStationId = Integer.parseInt(converter.getStations().get(stationId).toString());
                 if (currentSubwayLine.contains(currentStationId)){
                     if (currentSubwayLine.indexOf(currentStationId) == 0)
                     {
-                       connectingStations.add(currentSubwayLine.indexOf(currentStationId) + 1);
+                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) + 1);
                     }
                     else if (currentSubwayLine.indexOf(currentStationId) == currentSubwayLine.size() - 1)
                     {
@@ -72,6 +73,9 @@ public class SubwayStation {
             return this.objectid;
         }
     }
+
+
+
 }
 
 
