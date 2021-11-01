@@ -1,6 +1,5 @@
 import org.junit.Test;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +13,7 @@ public class SubwayStationTest {
         Converter converter = new Converter();
 
         // when
-        Map<Integer, SubwayStation.Feature> stations = converter.getStations();
+        Map<Integer, SubwayStation.Station> stations = converter.getStations();
 
         // then
         assertNotNull(stations);

@@ -1,15 +1,13 @@
-import java.io.IOException;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.*;
 
 public class SubwayStation {
-//    private SubwayLine lines = converter.getLines();
-//
-    private List<Feature> features = new ArrayList<>();
+    @SerializedName("features")
+    private List<Station> stations;
 
-
-
-    public List<Feature> getFeatures () {
-        return this.features;
+    public List<Station> getStations() {
+        return this.stations;
     }
 
     public static class Geometry {
@@ -19,33 +17,40 @@ public class SubwayStation {
         }
     }
 
-    public static class Feature {
+    public static class Station {
         private Properties properties;
         private Geometry geometry;
-        private List<Feature> connectingStations = getDirectConnections(this.getProperties().getObjectid());
-
-        public Feature() throws IOException {
-        }
 
         public Properties getProperties() {
             return this.properties;
         }
-
         public Geometry getGeometry () {
             return this.geometry;
         }
 
-        public List<Feature> getDirectConnections (String objectid) throws IOException {
-            Converter converter = new Converter();
-            List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
-                    "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
-            List <Feature> connections = this.connectingStations;
-            for (String line : trainLines) {
-                if (converter.getLines().getLine(line).contains(objectid)){
-                    connections.add(converter.getStations().get(objectid));
+        public List<Integer> getConnections (Converter converter, int stationId){
+            List<Integer> connectingStations = new ArrayList<>();
+            List<String> allSubwayLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
+                "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
+
+            for (String line : allSubwayLines) {
+                List<Integer> currentSubwayLine = converter.getLines().getSpecificLine(line);
+                int currentStationId = Integer.parseInt(converter.getStations().get(stationId).properties.objectid);
+                if (currentSubwayLine.contains(currentStationId)){
+                    if (currentSubwayLine.indexOf(currentStationId) == 0)
+                    {
+                       connectingStations.add(currentSubwayLine.indexOf(currentStationId) + 1);
+                    }
+                    else if (currentSubwayLine.indexOf(currentStationId) == currentSubwayLine.size() - 1)
+                    {
+                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) - 1);
+                    } else {
+                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) - 1);
+                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) + 1);
+                    }
                 }
             }
-            return connections;
+            return connectingStations;
         }
     }
 
@@ -67,7 +72,6 @@ public class SubwayStation {
             return this.objectid;
         }
     }
-
 }
 
 

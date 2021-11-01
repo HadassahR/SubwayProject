@@ -17,7 +17,7 @@ public class ConverterTest {
         Converter converter = new Converter();
 
         //when
-        Map<Integer, SubwayStation.Feature> stations = converter.getStations();
+        Map<Integer, SubwayStation.Station> stations = converter.getStations();
 
         //then
         Assert.assertNotNull(stations);
@@ -43,7 +43,7 @@ public class ConverterTest {
         //then
         Assert.assertNotNull(lines);
         for (String line : trainLines){
-            assertNotNull(converter.getLines().getLine(line));
+            assertNotNull(converter.getLines().getSpecificLine(line));
         }
     }
 }
