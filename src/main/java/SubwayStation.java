@@ -68,7 +68,7 @@ public class SubwayStation {
         public String getLine() {
             return this.line;
         }
-        public Integer getObjectid () {
+        public int getObjectid () {
             return this.objectid;
         }
     }
