@@ -1,14 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class SubwayStationTest {
 
@@ -17,7 +12,7 @@ public class SubwayStationTest {
         // given
         Converter converter = new Converter();
         SubwayStation.Station currentStation = converter.getStations().get(55);
-        List <Integer> expectedConnections = Arrays.asList(186);
+        List <Integer> expectedConnections = Collections.singletonList(186);
 
         // when
         List<Integer> receivedConnections = currentStation.getConnections(converter, currentStation);
@@ -45,7 +40,7 @@ public class SubwayStationTest {
         // given
         Converter converter = new Converter();
         SubwayStation.Station currentStation = converter.getStations().get(270); //
-        List <Integer> expectedConnections = Arrays.asList(431); //
+        List <Integer> expectedConnections = Collections.singletonList(431); //
 
         // when
         List<Integer> receivedConnections = currentStation.getConnections(converter, currentStation);

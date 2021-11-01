@@ -38,7 +38,7 @@ public class Converter {
     public Map<Integer, SubwayStation.Station> getStations ()    {
         Map<Integer, SubwayStation.Station> stationMap = new HashMap<>();
         for (SubwayStation.Station station : stations) {
-            stationMap.put(Integer.parseInt(station.getProperties().getObjectid()), station);
+            stationMap.put(station.getProperties().getObjectid(), station);
         }
         return stationMap;
     }

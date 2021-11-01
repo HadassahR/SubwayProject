@@ -1,12 +1,11 @@
 import com.google.gson.annotations.SerializedName;
-
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SubwayStation {
     @SerializedName("features")
     private List<Station> stations;
-
     public List<Station> getStations() {
         return this.stations;
     }
@@ -28,15 +27,15 @@ public class SubwayStation {
         public Geometry getGeometry () {
             return this.geometry;
         }
-        public List<Integer> getConnections (Converter converter, Station station){
-            int stationId = Integer.parseInt(properties.objectid);
+        public List<Integer> getConnections (Converter converter, Station currentStation){
+            int stationId = currentStation.getProperties().getObjectid();
             List<Integer> connectingStations = new ArrayList<>();
             List<String> allSubwayLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
                     "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
 
             for (String line : allSubwayLines) {
                 List<Integer> currentSubwayLine = converter.getLines().getSpecificLine(line);
-                int currentStationId = Integer.parseInt(station.getProperties().getObjectid());
+                int currentStationId = currentStation.getProperties().getObjectid();
                 if (currentSubwayLine.contains(currentStationId)){
                     if (currentSubwayLine.indexOf(currentStationId) == 0)
                     {
@@ -58,7 +57,7 @@ public class SubwayStation {
     public static class Properties{
         private String name;
         private String line;
-        private String objectid;
+        private int objectid;
 
         public List<String> getLines() {
             return Arrays.asList(line.split("-"));
@@ -69,7 +68,7 @@ public class SubwayStation {
         public String getLine() {
             return this.line;
         }
-        public String getObjectid () {
+        public Integer getObjectid () {
             return this.objectid;
         }
     }
