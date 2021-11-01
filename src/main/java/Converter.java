@@ -5,7 +5,9 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Converter {
 
@@ -33,8 +35,12 @@ public class Converter {
             reader.close();
     }
 
-    public List<SubwayStation.Feature> getStations () {
-        return this.stations;
+    public Map<Integer, SubwayStation.Feature> getStations ()    {
+        Map<Integer, SubwayStation.Feature> stationMap = new HashMap<>();
+        for (SubwayStation.Feature station : stations) {
+            stationMap.put(Integer.parseInt(station.getProperties().getObjectid()), station);
+        }
+        return stationMap;
     }
 
     public SubwayLine getLines(){

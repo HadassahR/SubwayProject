@@ -8,8 +8,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class SubwayConnectionsTest {
 
-    private final List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
-            "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
 //    @Test
 //    public void mapConnections() {
 //        // given
