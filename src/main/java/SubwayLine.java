@@ -3,7 +3,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.*;
 
 public class SubwayLine {
-    private List<Integer> a, b, c, d, e, f, g, j, l, m, n, q, r, s, w, z;
+    private List<Integer> A, B, C, D, E, F, G, J, L, M, N, Q, R, S, W, Z;
     @SerializedName("7 Express")
     private List<Integer> _7Express;
     @SerializedName("6 Express")
@@ -24,22 +24,22 @@ public class SubwayLine {
     private List<Integer> _7;
 
     public List<Integer> getSpecificLine(String line) {
-        return line.equals("A") ? (a) :
-        "B".equals(line) ? (b) :
-        "C".equals(line) ? (c) :
-        "D".equals(line) ? (d) :
-        "E".equals(line) ? (e) :
-        "F".equals(line) ? (f) :
-        "G".equals(line) ? (g) :
-        "J".equals(line) ? (j) :
-        "L".equals(line) ? (l) :
-        "M".equals(line) ? (m) :
-        "N".equals(line) ? (n) :
-        "Q".equals(line) ? (q) :
-        "R".equals(line) ? (r) :
-        "S".equals(line) ? (s) :
-        "W".equals(line) ? (w) :
-        "Z".equals(line) ? (z) :
+        return line.equals("A") ? (A) :
+        "B".equals(line) ? (B) :
+        "C".equals(line) ? (C) :
+        "D".equals(line) ? (D) :
+        "E".equals(line) ? (E) :
+        "F".equals(line) ? (F) :
+        "G".equals(line) ? (G) :
+        "J".equals(line) ? (J) :
+        "L".equals(line) ? (L) :
+        "M".equals(line) ? (M) :
+        "N".equals(line) ? (N) :
+        "Q".equals(line) ? (Q) :
+        "R".equals(line) ? (R) :
+        "S".equals(line) ? (S) :
+        "W".equals(line) ? (W) :
+        "Z".equals(line) ? (Z) :
         "7 Express".equals(line) ? (_7Express) :
         "6 Express".equals(line) ? (_6Express) :
         "1".equals(line) ? (_1) :

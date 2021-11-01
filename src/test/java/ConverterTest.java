@@ -35,15 +35,16 @@ public class ConverterTest {
         Converter converter = new Converter();
 
         //when
-        SubwayLine lines = converter.getLines();
+        SubwayLine subwayLine = converter.getLines();
 
         List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
                 "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
 
         //then
-        Assert.assertNotNull(lines);
+        Assert.assertNotNull(trainLines);
         for (String line : trainLines){
-            assertNotNull(converter.getLines().getSpecificLine(line));
+            List<Integer> specificLine = subwayLine.getSpecificLine(line);
+            assertNotNull(specificLine);
         }
     }
 }
