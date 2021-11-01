@@ -36,18 +36,18 @@ public class SubwayStation {
 
             for (String line : allSubwayLines) {
                 List<Integer> currentSubwayLine = converter.getLines().getSpecificLine(line);
-                int currentStationId = Integer.parseInt(converter.getStations().get(stationId).toString());
+                int currentStationId = Integer.parseInt(station.getProperties().getObjectid());
                 if (currentSubwayLine.contains(currentStationId)){
                     if (currentSubwayLine.indexOf(currentStationId) == 0)
                     {
-                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) + 1);
+                        connectingStations.add(currentSubwayLine.get(currentSubwayLine.indexOf(currentStationId) + 1));
                     }
                     else if (currentSubwayLine.indexOf(currentStationId) == currentSubwayLine.size() - 1)
                     {
-                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) - 1);
+                        connectingStations.add(currentSubwayLine.get(currentSubwayLine.indexOf(currentStationId) - 1));
                     } else {
-                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) - 1);
-                        connectingStations.add(currentSubwayLine.indexOf(currentStationId) + 1);
+                        connectingStations.add(currentSubwayLine.get(currentSubwayLine.indexOf(currentStationId) - 1));
+                        connectingStations.add(currentSubwayLine.get(currentSubwayLine.indexOf(currentStationId) + 1));
                     }
                 }
             }

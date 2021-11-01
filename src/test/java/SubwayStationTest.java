@@ -17,7 +17,7 @@ public class SubwayStationTest {
         // given
         Converter converter = new Converter();
         SubwayStation.Station currentStation = converter.getStations().get(55);
-        List <Integer> expectedConnections = Arrays.asList(156);
+        List <Integer> expectedConnections = Arrays.asList(186);
 
         // when
         List<Integer> receivedConnections = currentStation.getConnections(converter, currentStation);
