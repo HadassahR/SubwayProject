@@ -29,7 +29,7 @@ public class SubwayStation {
             return this.geometry;
         }
         public List<Integer> getConnections (Converter converter, Station station){
-            int stationId = Integer.parseInt(station.getProperties().getObjectid());
+            int stationId = Integer.parseInt(properties.objectid);
             List<Integer> connectingStations = new ArrayList<>();
             List<String> allSubwayLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
                     "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
