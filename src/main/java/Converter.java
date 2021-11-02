@@ -43,6 +43,9 @@ public class Converter {
         return stationMap;
     }
 
+    public List<SubwayStation.Station> getStationsList () {
+        return this.stations;
+    }
     public SubwayLine getLines(){
         return this.lines;
     }

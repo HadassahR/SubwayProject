@@ -9,18 +9,22 @@ public class ClosestSubwayStations {
         return Math.sqrt(calculateLatitude + calculateLongitude);
     }
 
-    public List<Double> calculateClosestStations (List<Double> originCoords, List<Double> destinationCoords, SubwayStation subwayStation) {
-        double shortestFromOrigin = Double.MAX_VALUE;
-        double shortestFromDestination = Double.MAX_VALUE;
+    public List<SubwayStation.Station> calculateClosestStations (List<Double> originCoords, List<Double> destinationCoords, List<SubwayStation.Station> subwayStation) {
+        double shortestDistanceFromOrigin = Double.MAX_VALUE;
+        int indexOrigin = 0;
+        double shortestDistanceFromDestination = Double.MAX_VALUE;
+        int indexDestination = 0;
 
-        for (SubwayStation.Station station : subwayStation.getStations()) {
-            if (calculateDistanceFormula(originCoords, station.getGeometry().getCoordinates()) < shortestFromOrigin){
-                shortestFromOrigin = subwayStation.getStations().indexOf(station);
+        for (SubwayStation.Station station : subwayStation) {
+            if (calculateDistanceFormula(originCoords, station.getGeometry().getCoordinates()) < shortestDistanceFromOrigin){
+                shortestDistanceFromOrigin = subwayStation.indexOf(station);
+                indexOrigin = subwayStation.indexOf(station);
             }
-            if (calculateDistanceFormula(destinationCoords, station.getGeometry().getCoordinates()) < shortestFromDestination) {
-                shortestFromDestination = subwayStation.getStations().indexOf(station);
+            if (calculateDistanceFormula(destinationCoords, station.getGeometry().getCoordinates()) < shortestDistanceFromDestination) {
+                shortestDistanceFromDestination = subwayStation.indexOf(station);
+                indexDestination = subwayStation.indexOf(station);
             }
         }
-        return Arrays.asList(shortestFromOrigin, shortestFromDestination);
+        return Arrays.asList(subwayStation.get(indexOrigin), subwayStation.get(indexDestination));
     }
 }
