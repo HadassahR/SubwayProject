@@ -22,7 +22,7 @@ public class ClosestSubwayStationsTest {
     }
 
     @Test
-    public void getClosestSubwayStation() throws IOException {
+    public void valid_getClosestSubwayStation() throws IOException {
         Converter converter = new Converter();
 
         // given
@@ -37,8 +37,26 @@ public class ClosestSubwayStationsTest {
         List<SubwayStation.Station> closestStations = closestSubwayStations.calculateClosestStations(myLocation, myDestination, converter.getStationsList());
 
         // then
-
         Assert.assertEquals(expectedStations, closestStations);
-
     }
+
+    @Test
+    public void invalid_getClosestSubwayStation() throws IOException {
+        Converter converter = new Converter();
+
+        // given
+        ClosestSubwayStations closestSubwayStations = new ClosestSubwayStations();
+        List<Double> myLocation = Arrays.asList(-73.98168087489129, 40.73097497580066);
+        List<Double> myDestination = Arrays.asList(-73.87661299986986, 40.74840800060913);
+        SubwayStation.Station stationA = converter.getStations().get(147);
+        SubwayStation.Station stationB = converter.getStations().get(242);
+        List<SubwayStation.Station> expectedStations = Arrays.asList(stationA, stationB);
+
+        // when
+        List<SubwayStation.Station> closestStations = closestSubwayStations.calculateClosestStations(myLocation, myDestination, converter.getStationsList());
+
+        // then
+        Assert.assertNotEquals(expectedStations, closestStations);
+    }
+
 }
