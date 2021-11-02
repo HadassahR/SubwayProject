@@ -16,12 +16,14 @@ public class ClosestSubwayStations {
         int indexDestination = 0;
 
         for (SubwayStation.Station station : subwayStation) {
-            if (calculateDistanceFormula(originCoords, station.getGeometry().getCoordinates()) < shortestDistanceFromOrigin){
-                shortestDistanceFromOrigin = subwayStation.indexOf(station);
+            double originDistance = calculateDistanceFormula(originCoords, station.getGeometry().getCoordinates());
+            if (originDistance < shortestDistanceFromOrigin){
+                shortestDistanceFromOrigin = originDistance;
                 indexOrigin = subwayStation.indexOf(station);
             }
-            if (calculateDistanceFormula(destinationCoords, station.getGeometry().getCoordinates()) < shortestDistanceFromDestination) {
-                shortestDistanceFromDestination = subwayStation.indexOf(station);
+            double destinationDistance = calculateDistanceFormula(destinationCoords, station.getGeometry().getCoordinates());
+            if (destinationDistance < shortestDistanceFromDestination) {
+                shortestDistanceFromDestination = destinationDistance;
                 indexDestination = subwayStation.indexOf(station);
             }
         }

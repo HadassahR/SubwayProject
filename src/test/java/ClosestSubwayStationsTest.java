@@ -27,10 +27,10 @@ public class ClosestSubwayStationsTest {
 
         // given
         ClosestSubwayStations closestSubwayStations = new ClosestSubwayStations();
-        List<Double> myLocation = Arrays.asList(-73.99106999861967, 40.73005400028978);
-        List<Double> myDestination = Arrays.asList(-73.98040679874578, 40.68831058019023);
-        SubwayStation.Station stationA = converter.getStations().get(1);
-        SubwayStation.Station stationB = converter.getStations().get(128);
+        List<Double> myLocation = Arrays.asList(-73.98168087489129, 40.73097497580066);
+        List<Double> myDestination = Arrays.asList(-73.87661299986986, 40.74840800060913);
+        SubwayStation.Station stationA = converter.getStations().get(146);
+        SubwayStation.Station stationB = converter.getStations().get(241);
         List<SubwayStation.Station> expectedStations = Arrays.asList(stationA, stationB);
 
         // when
