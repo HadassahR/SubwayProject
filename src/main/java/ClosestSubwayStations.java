@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class ClosestSubwayStations {
@@ -10,6 +11,7 @@ public class ClosestSubwayStations {
     }
 
     public List<SubwayStation.Station> calculateClosestStations (List<Double> originCoords, List<Double> destinationCoords, List<SubwayStation.Station> subwayStation) {
+
         double shortestDistanceFromOrigin = Double.MAX_VALUE;
         int indexOrigin = 0;
         double shortestDistanceFromDestination = Double.MAX_VALUE;
@@ -25,8 +27,10 @@ public class ClosestSubwayStations {
             if (destinationDistance < shortestDistanceFromDestination) {
                 shortestDistanceFromDestination = destinationDistance;
                 indexDestination = subwayStation.indexOf(station);
+                
             }
         }
         return Arrays.asList(subwayStation.get(indexOrigin), subwayStation.get(indexDestination));
     }
+
 }
