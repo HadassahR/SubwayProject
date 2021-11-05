@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 public class ClosestSubwayStations {
@@ -10,27 +8,18 @@ public class ClosestSubwayStations {
         return Math.sqrt(calculateLatitude + calculateLongitude);
     }
 
-    public List<SubwayStation.Station> calculateClosestStations (List<Double> originCoords, List<Double> destinationCoords, List<SubwayStation.Station> subwayStation) {
+    public SubwayStation.Station getClosestStation (List<Double> coordinates, List<SubwayStation.Station> subwayStation) {
 
-        double shortestDistanceFromOrigin = Double.MAX_VALUE;
-        int indexOrigin = 0;
-        double shortestDistanceFromDestination = Double.MAX_VALUE;
-        int indexDestination = 0;
+        double shortestDistanceFromCoords = Double.MAX_VALUE;
+        int indexCoords = 0;
 
         for (SubwayStation.Station station : subwayStation) {
-            double originDistance = calculateDistanceFormula(originCoords, station.getGeometry().getCoordinates());
-            if (originDistance < shortestDistanceFromOrigin){
-                shortestDistanceFromOrigin = originDistance;
-                indexOrigin = subwayStation.indexOf(station);
-            }
-            double destinationDistance = calculateDistanceFormula(destinationCoords, station.getGeometry().getCoordinates());
-            if (destinationDistance < shortestDistanceFromDestination) {
-                shortestDistanceFromDestination = destinationDistance;
-                indexDestination = subwayStation.indexOf(station);
-                
+            double distance = calculateDistanceFormula(coordinates, station.getGeometry().getCoordinates());
+            if (distance < shortestDistanceFromCoords){
+                shortestDistanceFromCoords = distance;
+                indexCoords = subwayStation.indexOf(station);
             }
         }
-        return Arrays.asList(subwayStation.get(indexOrigin), subwayStation.get(indexDestination));
+        return subwayStation.get(indexCoords);
     }
-
 }

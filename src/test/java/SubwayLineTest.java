@@ -12,7 +12,7 @@ public class SubwayLineTest {
         // given
         Converter converter = new Converter();
         List<String> trainLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
-                "N", "Q", "R", "S", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
+                "N", "Q", "R", "W", "Z", "7 Express", "6 Express", "1", "2", "3", "4", "5", "6", "7");
 
         // when
         SubwayLine subwayLine = converter.getLines();
@@ -23,4 +23,5 @@ public class SubwayLineTest {
             assertNotNull(specificLine);
         }
     }
+
 }

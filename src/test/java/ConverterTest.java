@@ -37,5 +37,6 @@ public class ConverterTest {
         //then
         Assert.assertNotNull(subwayLine);
         }
-    }
+
+}
 
