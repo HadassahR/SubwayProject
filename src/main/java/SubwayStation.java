@@ -72,6 +72,8 @@ public class SubwayStation {
         private boolean visited;
         private int distance = 0;
 
+        private Station previous;
+
         public List<String> getLines() {
             return Arrays.asList(line.split("-"));
         }
@@ -107,6 +109,14 @@ public class SubwayStation {
 
         public void setDistance(int distance) {
             this.distance = distance;
+        }
+
+        public Station getPrevious() {
+            return previous;
+        }
+
+        public void setPrevious(Station previous) {
+            this.previous = previous;
         }
     }
 

@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class ClosestSubwayStations {
+public class CoordinateToStation {
 
     public double calculateDistanceFormula (List<Double> locationCoords, List<Double> stationCoords) {
         double calculateLatitude = Math.pow((stationCoords.get(0) - locationCoords.get(0)), 2);
