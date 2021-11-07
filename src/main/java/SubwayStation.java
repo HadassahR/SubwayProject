@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SubwayStation {
 
-
     @SerializedName("features")
     private List<Station> stations;
     public List<Station> getStations() {
@@ -69,9 +68,9 @@ public class SubwayStation {
         private String line;
         private int objectid;
 
-        private boolean current = false;
-        private boolean visited = false;
-        private int distance = Integer.MAX_VALUE;
+        private boolean current;
+        private boolean visited;
+        private int distance = 0;
 
         public List<String> getLines() {
             return Arrays.asList(line.split("-"));
@@ -107,7 +106,7 @@ public class SubwayStation {
         }
 
         public void setDistance(int distance) {
-            this.distance += distance;
+            this.distance = distance;
         }
     }
 
