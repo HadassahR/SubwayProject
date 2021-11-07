@@ -39,26 +39,29 @@ public class SubwayStation {
 
             for (String line : allSubwayLines) {
                 List<Integer> currentSubwayLine = converter.getLines().getSpecificLine(line);
-                int currentStationId = currentStation.getProperties().getObjectid();
-                if (currentSubwayLine.contains(currentStationId)) {
-                    if (currentSubwayLine.indexOf(currentStationId) == 0)
+                if (currentSubwayLine.contains(stationId)) {
+                    if (currentSubwayLine.indexOf(stationId) == 0)
                     {
-
-                        connectingStations.add(converter.getStations().get(currentSubwayLine.indexOf(currentStationId) + 1));
+                        int index = currentSubwayLine.get(currentSubwayLine.indexOf(stationId) + 1);
+                        connectingStations.add(converter.getStations().get(index));
                     }
-                    else if (currentSubwayLine.indexOf(currentStationId) == currentSubwayLine.size() - 1)
+                    else if (currentSubwayLine.indexOf(stationId) == currentSubwayLine.size() - 1)
                     {
-                        connectingStations.add(converter.getStations().get(currentSubwayLine.indexOf(currentStationId) - 1));
+                        int index = currentSubwayLine.get(currentSubwayLine.indexOf(stationId) - 1);
+                        connectingStations.add(converter.getStations().get(index));
                     }
                     else
-                        {
-                        connectingStations.add(converter.getStations().get(currentSubwayLine.indexOf(currentStationId) - 1));
-                        connectingStations.add(converter.getStations().get(currentSubwayLine.indexOf(currentStationId) + 1));
+                    {
+                        int index1 = currentSubwayLine.get(currentSubwayLine.indexOf(stationId) + 1);
+                        int index2 = currentSubwayLine.get(currentSubwayLine.indexOf(stationId) - 1);
+                        connectingStations.add(converter.getStations().get(index1));
+                        connectingStations.add(converter.getStations().get(index2));
                     }
                 }
             }
             return connectingStations;
         }
+
     }
 
     public static class Properties{

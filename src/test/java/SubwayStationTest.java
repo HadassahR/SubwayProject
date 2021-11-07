@@ -21,12 +21,12 @@ public class SubwayStationTest {
     }
 
     @Test
-    public void getConnectionsEnd () throws IOException {
+    public void getConnectionsMid () throws IOException {
         // given
         Converter converter = new Converter();
         SubwayStation.Station currentStation = converter.getStations().get(127);
-        SubwayStation.Station station1 = converter.getStations().get(8);
-        SubwayStation.Station station2 = converter.getStations().get(447);
+        SubwayStation.Station station1 = converter.getStations().get(447);
+        SubwayStation.Station station2 = converter.getStations().get(8);
         List <SubwayStation.Station> expectedConnections = Arrays.asList(station1, station2, station1, station2); //
 
         // when
