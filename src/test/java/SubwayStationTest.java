@@ -14,7 +14,8 @@ public class SubwayStationTest {
         SubwayStation.Station expectedStation = converter.getStations().get(186);
 
         // when
-        List<SubwayStation.Station> receivedConnections = currentStation.getConnections(converter, currentStation);
+        currentStation.setConnections(converter, currentStation);
+        List<SubwayStation.Station> receivedConnections = currentStation.getConnections();
 
         // then
         Assert.assertEquals(expectedStation.getProperties().getObjectid(), receivedConnections.get(0).getProperties().getObjectid());
@@ -30,7 +31,8 @@ public class SubwayStationTest {
         List <SubwayStation.Station> expectedConnections = Arrays.asList(station1, station2, station1, station2); //
 
         // when
-        List<SubwayStation.Station> receivedConnections = currentStation.getConnections(converter, currentStation);
+        currentStation.setConnections(converter, currentStation);
+        List<SubwayStation.Station> receivedConnections = currentStation.getConnections();
 
         // then
         Assert.assertEquals(expectedConnections, receivedConnections);
@@ -44,7 +46,8 @@ public class SubwayStationTest {
         SubwayStation.Station expectedStation = converter.getStations().get(431);
 
         // when
-        List<SubwayStation.Station> receivedConnections = currentStation.getConnections(converter, currentStation);
+        currentStation.setConnections(converter, currentStation);
+        List<SubwayStation.Station> receivedConnections = currentStation.getConnections();
 
         int expectedObjectId = expectedStation.getProperties().getObjectid();
         int receivedObjectId = receivedConnections.get(0).getProperties().getObjectid();

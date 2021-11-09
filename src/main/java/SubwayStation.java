@@ -1,5 +1,4 @@
 import com.google.gson.annotations.SerializedName;
-import org.graalvm.compiler.lir.sparc.SPARCTailDelayedLIRInstruction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +22,7 @@ public class SubwayStation {
     public static class Station {
         private Properties properties;
         private Geometry geometry;
+        private List<Station> connections;
 
         public Properties getProperties() {
             return this.properties;
@@ -30,7 +30,12 @@ public class SubwayStation {
         public Geometry getGeometry () {
             return this.geometry;
         }
-        public List<Station> getConnections (Converter converter, Station currentStation){
+
+        public List<Station> getConnections () {
+            return this.connections;
+        }
+
+        public void setConnections (Converter converter, Station currentStation){
             int stationId = currentStation.getProperties().getObjectid();
             List<Station> connectingStations = new ArrayList<>();
             List<String> allSubwayLines = Arrays.asList("A", "B", "C", "D", "E", "F", "G", "J", "L", "M",
@@ -58,7 +63,7 @@ public class SubwayStation {
                     }
                 }
             }
-            return connectingStations;
+            connections = connectingStations;
         }
 
     }
@@ -67,8 +72,6 @@ public class SubwayStation {
         private String name;
         private String line;
         private int objectid;
-
-        private boolean visited;
         private int distance = 0;
 
         private Station previous;
@@ -86,14 +89,6 @@ public class SubwayStation {
             return this.objectid;
         }
 
-
-        public boolean isVisited() {
-            return visited;
-        }
-
-        public void setVisited(boolean visited) {
-            this.visited = visited;
-        }
 
         public int getDistance() {
             return distance;
