@@ -28,15 +28,17 @@ public class SubwayNetworkTest {
     public void getShortestPath_MultipleStops() throws IOException {
         // given
         Converter converter = new Converter();
-        SubwayStation.Station stationA = converter.getStations().get(264);
-        SubwayStation.Station stationB = converter.getStations().get(462);
+        SubwayStation.Station stationA = converter.getStations().get(105);
+        SubwayStation.Station stationB = converter.getStations().get(92);
+        SubwayStation.Station stationC = converter.getStations().get(200);
+        SubwayStation.Station stationD = converter.getStations().get(32);
         SubwayNetwork subwayNetwork = new SubwayNetwork();
-        List<SubwayStation.Station> expectedPath = Arrays.asList(stationA, stationB);
+        List<SubwayStation.Station> expectedPath = Arrays.asList(stationA, stationB, stationC, stationB);
 
         // when
-        List<SubwayStation.Station> result = subwayNetwork.findShortestPath(converter, stationA, stationB);
+        List<SubwayStation.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationD);
 
         // then
-        Assert.assertNotNull(result); // need expectedResult
+        Assert.assertEquals(expectedPath, resultPath);
     }
 }
