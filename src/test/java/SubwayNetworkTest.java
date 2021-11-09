@@ -20,7 +20,7 @@ public class SubwayNetworkTest {
         List<SubwayStation.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationB);
 
         // then
-        Assert.assertNotNull(resultPath); // need expectedResult
+        Assert.assertNotNull(resultPath);
         Assert.assertEquals(expectedPath, resultPath);
     }
 
@@ -33,7 +33,7 @@ public class SubwayNetworkTest {
         SubwayStation.Station stationC = converter.getStations().get(200);
         SubwayStation.Station stationD = converter.getStations().get(32);
         SubwayNetwork subwayNetwork = new SubwayNetwork();
-        List<SubwayStation.Station> expectedPath = Arrays.asList(stationA, stationB, stationC, stationB);
+        List<SubwayStation.Station> expectedPath = Arrays.asList(stationA, stationB, stationC, stationD);
 
         // when
         List<SubwayStation.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationD);

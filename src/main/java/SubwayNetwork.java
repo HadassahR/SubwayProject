@@ -5,9 +5,7 @@ import java.util.List;
 
 public class SubwayNetwork {
 
-//    private Map<Integer, SubwayStation.Station> stations;
-
-    public List<SubwayStation.Station> findShortestPath(Converter converter, SubwayStation.Station origin, SubwayStation.Station destination) throws IOException {
+    public List<SubwayStation.Station> findShortestPath(Converter converter, SubwayStation.Station origin, SubwayStation.Station destination) {
         dijkstraAlgorithm(converter, origin, destination);
         return tracePath(origin, destination);
     }
@@ -35,15 +33,6 @@ public class SubwayNetwork {
             for (SubwayStation.Station station : unvisitedStations) {
                 currentStation = station.getProperties().getDistance() < currentStation.getProperties().getDistance() ? station : currentStation;
             }
-
-//            int smallestDistance = Integer.MAX_VALUE;
-//            for (SubwayStation.Station station : unvisitedStations) {
-//                if (station.getProperties().getDistance() < smallestDistance){
-//                    smallestDistance = station.getProperties().getDistance();
-//                    currentStation = station;
-//                }
-//            }
-//            stillPossibleConnections = smallestDistance != Integer.MAX_VALUE;
         }
     }
 
