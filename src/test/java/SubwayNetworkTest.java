@@ -16,7 +16,7 @@ public class SubwayNetworkTest {
         SubwayNetwork subwayNetwork = new SubwayNetwork();
 
         // when
-        List<SubwayStation.Station> result = subwayNetwork.findShortestPath(stationA, stationB);
+        List<SubwayStation.Station> result = subwayNetwork.findShortestPath(converter, stationA, stationB);
 
         // then
         Assert.assertNotNull(result); // need expectedResult
@@ -31,7 +31,7 @@ public class SubwayNetworkTest {
         SubwayNetwork subwayNetwork = new SubwayNetwork();
 
         // when
-        List<SubwayStation.Station> result = subwayNetwork.findShortestPath(stationA, stationB);
+        List<SubwayStation.Station> result = subwayNetwork.findShortestPath(converter, stationA, stationB);
 
         // then
         Assert.assertNotNull(result); // need expectedResult

@@ -68,7 +68,6 @@ public class SubwayStation {
         private String line;
         private int objectid;
 
-        private boolean current;
         private boolean visited;
         private int distance = 0;
 
@@ -87,13 +86,6 @@ public class SubwayStation {
             return this.objectid;
         }
 
-        public boolean isCurrent() {
-            return current;
-        }
-
-        public void setCurrent(boolean current) {
-            this.current = current;
-        }
 
         public boolean isVisited() {
             return visited;
