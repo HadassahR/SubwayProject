@@ -25,8 +25,8 @@ public class SubwayNetwork {
                 int tentativeDistance = currentStation.getProperties().getDistance() + 1;
                 if (tentativeDistance < neighboringStation.getProperties().getDistance()) {
                     neighboringStation.getProperties().setDistance(tentativeDistance);
+                    neighboringStation.getProperties().setPrevious(currentStation);
                 }
-                neighboringStation.getProperties().setPrevious(currentStation);
             }
             unvisitedStations.remove(currentStation);
 
@@ -37,17 +37,17 @@ public class SubwayNetwork {
     }
 
 
-    private List<SubwayStation.Station> tracePath (SubwayStation.Station originStation, SubwayStation.Station destinationStation) {
-        List<SubwayStation.Station> shortestPath = new ArrayList<>();
-        shortestPath.add(destinationStation);
-
-        SubwayStation.Station currentStation = destinationStation;
-        while (currentStation.getProperties().getPrevious() != null) {
-            shortestPath.add(currentStation.getProperties().getPrevious());
-            currentStation = currentStation.getProperties().getPrevious();
-        }
-        shortestPath.add(originStation);
-        Collections.reverse(shortestPath);
-        return shortestPath;
-    }
+//    private List<SubwayStation.Station> tracePath (SubwayStation.Station originStation, SubwayStation.Station destinationStation) {
+//        List<SubwayStation.Station> shortestPath = new ArrayList<>();
+//        shortestPath.add(destinationStation);
+//
+//        SubwayStation.Station currentStation = destinationStation;
+//        while (currentStation.getProperties().getPrevious() != null) {
+//            shortestPath.add(currentStation.getProperties().getPrevious());
+//            currentStation = currentStation.getProperties().getPrevious();
+//        }
+//        shortestPath.add(originStation);
+//        Collections.reverse(shortestPath);
+//        return shortestPath;
+//    }
 }
