@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SubwayStation {
+public class SubwayStations {
 
     @SerializedName("features")
     private List<Station> stations;
@@ -66,6 +66,10 @@ public class SubwayStation {
             connections = connectingStations;
         }
 
+        @Override
+        public String toString() {
+            return this.properties.objectid + " " + this.properties.name;
+        }
     }
 
     public static class Properties{

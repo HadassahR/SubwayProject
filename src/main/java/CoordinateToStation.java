@@ -8,12 +8,12 @@ public class CoordinateToStation {
         return Math.sqrt(calculateLatitude + calculateLongitude);
     }
 
-    public SubwayStation.Station getClosestStation (List<Double> coordinates, List<SubwayStation.Station> subwayStation) {
+    public SubwayStations.Station getClosestStation (List<Double> coordinates, List<SubwayStations.Station> subwayStation) {
 
         double shortestDistanceFromCoords = Double.MAX_VALUE;
         int indexCoords = 0;
 
-        for (SubwayStation.Station station : subwayStation) {
+        for (SubwayStations.Station station : subwayStation) {
             double distance = calculateDistanceFormula(coordinates, station.getGeometry().getCoordinates());
             if (distance < shortestDistanceFromCoords){
                 shortestDistanceFromCoords = distance;

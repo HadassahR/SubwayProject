@@ -11,34 +11,33 @@ public class SubwayNetworkTest {
     public void getShortestPath_OneStop () throws IOException {
         // given
         Converter converter = new Converter();
-        SubwayStation.Station stationA = converter.getStations().get(55);
-        SubwayStation.Station stationB = converter.getStations().get(186);
+        SubwayStations.Station stationA = converter.getStations().get(55);
+        SubwayStations.Station stationB = converter.getStations().get(186);
         SubwayNetwork subwayNetwork = new SubwayNetwork();
-        List<SubwayStation.Station> expectedPath = Arrays.asList(stationA, stationB);
+        List<SubwayStations.Station> expectedPath = Arrays.asList(stationA, stationB);
 
         // when
-        List<SubwayStation.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationB);
+        List<SubwayStations.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationB);
 
         // then
         Assert.assertNotNull(resultPath);
         Assert.assertEquals(expectedPath, resultPath);
     }
 
-//    @Test
-//    public void getShortestPath_MultipleStops() throws IOException {
-//        // given
-//        Converter converter = new Converter();
-//        SubwayStation.Station stationA = converter.getStations().get(105);
-//        SubwayStation.Station stationB = converter.getStations().get(92);
-//        SubwayStation.Station stationC = converter.getStations().get(200);
-//        SubwayStation.Station stationD = converter.getStations().get(32);
-//        SubwayNetwork subwayNetwork = new SubwayNetwork();
-//        List<SubwayStation.Station> expectedPath = Arrays.asList(stationA, stationB, stationC, stationD);
-//
-//        // when
-//        List<SubwayStation.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationD);
-//
-//        // then
-//        Assert.assertEquals(expectedPath, resultPath);
-//    }
+    @Test
+    public void getShortestPath_MultipleStops() throws IOException {
+        // given
+        Converter converter = new Converter();
+        SubwayStations.Station stationA = converter.getStations().get(105);
+        SubwayStations.Station stationB = converter.getStations().get(31);
+        SubwayStations.Station stationC = converter.getStations().get(32);
+        SubwayNetwork subwayNetwork = new SubwayNetwork();
+        List<SubwayStations.Station> expectedPath = Arrays.asList(stationA, stationB, stationC);
+
+        // when
+        List<SubwayStations.Station> resultPath = subwayNetwork.findShortestPath(converter, stationA, stationC);
+
+        // then
+        Assert.assertEquals(expectedPath, resultPath);
+    }
 }

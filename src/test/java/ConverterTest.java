@@ -15,7 +15,7 @@ public class ConverterTest {
         Converter converter = new Converter();
 
         //when
-        Map<Integer, SubwayStation.Station> stations = converter.getStations();
+        Map<Integer, SubwayStations.Station> stations = converter.getStations();
 
         //then
         Assert.assertNotNull(stations);

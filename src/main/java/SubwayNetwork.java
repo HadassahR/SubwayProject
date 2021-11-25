@@ -1,27 +1,26 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class SubwayNetwork {
 
-    public List<SubwayStation.Station> findShortestPath(Converter converter, SubwayStation.Station origin, SubwayStation.Station destination) {
+    public List<SubwayStations.Station> findShortestPath(Converter converter, SubwayStations.Station origin, SubwayStations.Station destination) {
         dijkstraAlgorithm(converter, origin, destination);
         return tracePath(origin, destination);
     }
 
-    private void dijkstraAlgorithm (Converter converter, SubwayStation.Station currentStation, SubwayStation.Station destinationStation) {
-        List<SubwayStation.Station> unvisitedStations = converter.getStationsList();
+    private void dijkstraAlgorithm (Converter converter, SubwayStations.Station currentStation, SubwayStations.Station destinationStation) {
+        List<SubwayStations.Station> unvisitedStations = converter.getStationsList();
 
-        for (SubwayStation.Station station : unvisitedStations) {
+        for (SubwayStations.Station station : unvisitedStations) {
             station.getProperties().setDistance(Integer.MAX_VALUE);
             station.setConnections(converter, station);
         }
         currentStation.getProperties().setDistance(0);
 
-        while (!(currentStation.getConnections().contains(destinationStation))) {
-            List<SubwayStation.Station> currentStationNeighbors = currentStation.getConnections();
-            for (SubwayStation.Station neighboringStation : currentStationNeighbors) {
+        while (unvisitedStations.contains(destinationStation)) {
+            List<SubwayStations.Station> currentStationNeighbors = currentStation.getConnections();
+            for (SubwayStations.Station neighboringStation : currentStationNeighbors) {
                 int tentativeDistance = currentStation.getProperties().getDistance() + 1;
                 if (tentativeDistance < neighboringStation.getProperties().getDistance()) {
                     neighboringStation.getProperties().setDistance(tentativeDistance);
@@ -29,24 +28,24 @@ public class SubwayNetwork {
                 }
             }
             unvisitedStations.remove(currentStation);
-
-            for (SubwayStation.Station station : unvisitedStations) {
-                currentStation = station.getProperties().getDistance() < currentStation.getProperties().getDistance() ? station : currentStation;
+            currentStation = unvisitedStations.get(0);
+            for (SubwayStations.Station station : unvisitedStations) {
+                currentStation = station.getProperties().getDistance() < currentStation.getProperties().getDistance() ?
+                        station : currentStation;
             }
         }
     }
 
 
-    private List<SubwayStation.Station> tracePath (SubwayStation.Station originStation, SubwayStation.Station destinationStation) {
-        List<SubwayStation.Station> shortestPath = new ArrayList<>();
+    private List<SubwayStations.Station> tracePath (SubwayStations.Station originStation, SubwayStations.Station destinationStation) {
+        List<SubwayStations.Station> shortestPath = new ArrayList<>();
         shortestPath.add(destinationStation);
 
-        SubwayStation.Station currentStation = destinationStation;
+        SubwayStations.Station currentStation = destinationStation;
         while (currentStation.getProperties().getPrevious() != null) {
             shortestPath.add(currentStation.getProperties().getPrevious());
             currentStation = currentStation.getProperties().getPrevious();
         }
-        shortestPath.add(originStation);
         Collections.reverse(shortestPath);
         return shortestPath;
     }
