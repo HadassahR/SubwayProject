@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Converter {
 
-    private List<SubwayStation.Station> stations;
+    private List<SubwayStations.Station> stations;
     private SubwayLine lines;
 
     public Converter () throws IOException {
@@ -22,7 +22,7 @@ public class Converter {
     private void convertJsonToStation () throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("SubwayStations.json"));
-        SubwayStation subwayStation = gson.fromJson(reader, SubwayStation.class);
+        SubwayStations subwayStation = gson.fromJson(reader, SubwayStations.class);
         stations = new ArrayList<>();
         stations.addAll(subwayStation.getStations());
         reader.close();
@@ -35,14 +35,17 @@ public class Converter {
             reader.close();
     }
 
-    public Map<Integer, SubwayStation.Station> getStations ()    {
-        Map<Integer, SubwayStation.Station> stationMap = new HashMap<>();
-        for (SubwayStation.Station station : stations) {
+    public Map<Integer, SubwayStations.Station> getStations ()    {
+        Map<Integer, SubwayStations.Station> stationMap = new HashMap<>();
+        for (SubwayStations.Station station : stations) {
             stationMap.put(station.getProperties().getObjectid(), station);
         }
         return stationMap;
     }
 
+    public List<SubwayStations.Station> getStationsList () {
+        return this.stations;
+    }
     public SubwayLine getLines(){
         return this.lines;
     }

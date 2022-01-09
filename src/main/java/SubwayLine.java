@@ -3,7 +3,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.*;
 
 public class SubwayLine {
-    private List<Integer> A, B, C, D, E, F, G, J, L, M, N, Q, R, S, W, Z;
+    private List<Integer> A, B, C, D, E, F, G, J, L, M, N, Q, R, W, Z;
     @SerializedName("7 Express")
     private List<Integer> _7Express;
     @SerializedName("6 Express")
@@ -37,7 +37,6 @@ public class SubwayLine {
         "N".equals(line) ? (N) :
         "Q".equals(line) ? (Q) :
         "R".equals(line) ? (R) :
-        "S".equals(line) ? (S) :
         "W".equals(line) ? (W) :
         "Z".equals(line) ? (Z) :
         "7 Express".equals(line) ? (_7Express) :
